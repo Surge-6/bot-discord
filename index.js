@@ -9,7 +9,7 @@ client.on('ready', () => {
     client.user.setActivity(' &help | BY SURGE');
 });
 
-const prefix = '&'
+
 
 
 
@@ -32,7 +32,7 @@ client.on('message', msg => {
   });
 
   client.on('message', surge => {
-    if (surge.content.startsWith(prefix + 'avatar')) {
+    if (surge.content.startsWith('-avatar')) {
         const user = surge.mentions.users.first() || surge.author;
         const avatarEmbed = new Discord.MessageEmbed()
             .setAuthor(`${user.username} Avatar`)  
@@ -46,7 +46,7 @@ surge.channel.send(avatarEmbed);
 }); 
 
 client.on('message', surge => {
-    if (surge.content === prefix + 'help') { 
+    if (surge.content === '-help') { 
   let embed = new Discord.MessageEmbed()    
   .setTitle(`:envelope_with_arrow: command list :envelope_with_arrow:`)  
 .addField(`:sparkles: public command :sparkles:`,`**=====================**`)
@@ -70,7 +70,7 @@ ${prefix}bans , لعرض عدد البندين في السيرفر
 });
 
 client.on('message', message => {
-  if (message.content === prefix + 'bot') {
+  if (message.content === '-bot') {
       const embed = new Discord.MessageEmbed()
           .setColor("RANDOM")
           .setTitle('__Info about the Bot__')
@@ -85,7 +85,7 @@ client.on('message', message => {
  
 
 client.on('message', surge => {
-    if(surge.content.startsWith(prefix + 'user')) {
+    if(surge.content.startsWith('-user')) {
        var professor = new Discord.MessageEmbed()
        .setColor('#985db3')
        .setTitle('> Your User')
@@ -103,7 +103,7 @@ client.on('message', surge => {
 client.on('message', surge => {
     if (!surge.guild) return;
   
-    if (surge.content.startsWith(prefix + 'kick')) {
+    if (surge.content.startsWith('-kick')) {
       if (!surge.member.hasPermission("KICK_MEMBERS"))  return;
       const user = surge.mentions.users.first();
       if (user) {
@@ -129,7 +129,7 @@ client.on('message', surge => {
 
   client.on('message', surge => {
     if (!surge.guild) return;
-    if (surge.content.startsWith(prefix + 'ban')) {
+    if (surge.content.startsWith('-ban')) {
       if (!surge.member.hasPermission("BAN_MEMBERS"))  return;
       const user = surge.mentions.users.first();
       if (user) {
@@ -174,7 +174,7 @@ client.on('guildMemberAdd', surge => {
 
 
 client.on('message', surge => {
-  if (surge.content.split(" ")[0].toLowerCase() === prefix + "clear") {
+  if (surge.content.split(" ")[0].toLowerCase() === "-clear") {
          const word = surge.content;
          const number = word.slice(7, word.length);
          const int = Number(number);
@@ -199,7 +199,7 @@ client.on('message', surge => {
  })
 
 client.on('message', surge => {
-    if (surge.content.startsWith(prefix + "bans")) {
+    if (surge.content.startsWith("-bans")) {
       if (!surge.channel.guild) return;
       surge.channel
        surge.guild.fetchBans()
@@ -211,7 +211,7 @@ client.on('message', surge => {
 client.on("message", async surge => {
   if (!surge.guild || surge.author.bot) return;
   if (!surge.content.startsWith(prefix)) return;
-  if (surge.content.startsWith(prefix + "bc")) {
+  if (surge.content.startsWith("-bc")) {
     if (!surge.member.hasPermission("ADMINISTRATOR")) return surge.reply ('You dont have Permissions.');
     if (surge.guild.interval) return surge.reply ('**بث آخر قيد التشغيل ، الرجاء الانتظار حتى ينتهي**')
     let args = surge.content
@@ -303,7 +303,7 @@ client.on("message", async surge => {
           })
           .catch(() => m.delete());
       });
-  } else if (surge.content.startsWith(prefix + "setname")) {
+  } else if (surge.content.startsWith("-setname")) {
     let args = surge.content
       .split(" ")
       .slice(1)
@@ -324,7 +324,7 @@ client.on("message", async surge => {
 
 client.on('message' , surge => {
     if(surge.author.bot) return;
-    if(surge.content.startsWith(prefix + "ping")) {
+    if(surge.content.startsWith("-ping")) {
       if (!surge.channel.guild) return;
       surge.channel
       surge.channel.send('SURGE').then((msg) => {
@@ -341,7 +341,7 @@ client.on('message' , surge => {
 
 client.on('message', surge => {
     if (surge.author.bot) return;
-    if (surge.content.startsWith(prefix + 'id')) {
+    if (surge.content.startsWith('-id')) {
       var user = surge.guild.member (surge.mentions.members.first() || surge.author);
         const embed = new Discord.MessageEmbed()
     .setColor("RANDOM") 
